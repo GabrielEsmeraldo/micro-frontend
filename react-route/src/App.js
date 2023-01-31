@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Parcel from 'single-spa-react/parcel'
 import { v4 as uuidv4 } from 'uuid';
+import { emitEvent } from '../../utils/src/mfe-utils';
 
 const App = ({ name }) => {
   const [task, updateTask] = useState('')
@@ -11,14 +12,14 @@ const App = ({ name }) => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    dispatchEvent(new CustomEvent('@mfe/react-route/todo/add-task',
-      {
-        detail: {
-          id: uuidv4(),
-          describe: task
-        }
-      })
-    )
+
+    emitEvent('@mfe/react-route/todo/add-task', {
+      detail: {
+        id: uuidv4(),
+        describe: task
+      }
+    })
+
     updateTask('')
   }
 

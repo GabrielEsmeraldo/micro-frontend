@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react'
+import { listenEvent } from '../../utils/src/mfe-utils'
 
 const App = () => {
   const [tasks, updateTasks] = useState([])
 
   useEffect(() => {
-    window.addEventListener('@mfe/react-route/todo/add-task', event => {
+    listenEvent('@mfe/react-route/todo/add-task', event => {
       updateTasks(oldTask => [...oldTask, event.detail])
     })
+
+    // window.addEventListener('@mfe/react-route/todo/add-task', event => {
+    //   updateTasks(oldTask => [...oldTask, event.detail])
+    // })
   }, [])
 
   return (
