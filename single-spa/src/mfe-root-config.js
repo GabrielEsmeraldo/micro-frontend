@@ -18,6 +18,15 @@ registerApplication({
   activeWhen: (location) => location.pathname === '/react-route',
 });
 
+registerApplication({
+  name: "@mfe/react-lazy",
+  app: () =>
+    System.import(
+      "@mfe/react-lazy"
+    ),
+  activeWhen: ['/react-lazy'],
+});
+
 // registerApplication({
 //   name: "@mfe/react-single",
 //   app: () =>
