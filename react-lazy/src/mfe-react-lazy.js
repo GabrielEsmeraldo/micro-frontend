@@ -1,5 +1,4 @@
 import React from "react";
-import './set-public-path'
 import ReactDOM from "react-dom";
 import singleSpaReact from "single-spa-react";
 import Root from "./components/Root";
